@@ -4,3 +4,4 @@ K {}
 V {}
 S {}
 E {}
+C {opamp_two_stage.sym} 80 -60 0 0 {name=x1}
