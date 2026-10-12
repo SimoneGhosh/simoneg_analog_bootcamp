@@ -1,15 +1,11 @@
 ** sch_path: /home/ghosh/simoneg_analog_bootcamp/analog/bootcamp_opamp/schematics/tb_impedance.sch
 **.subckt tb_impedance
-x1 net3 VOUT net2 inp net4 opamp_two_stage
-VSS net4 GND 0
-VDD net3 GND 1.8
+x1 net2 VOUT net1 VOUT net3 opamp_two_stage
+VSS net3 GND 0
+VDD net2 GND 1.8
 VCM net1 GND dc 0.9 ac 0
-VDIFF net5 net6 dc -0.1118m ac 0
-R1 net2 net1 1mq m=1
-R2 net6 net1 1mq m=1
-L4 inp net5 1G m=1
 Iout VOUT GND dc 0 ac 1
-Iin inp GND dc 0 ac 0
+Iin VOUT GND dc 0 ac 0
 **** begin user architecture code
 
 .op
@@ -17,10 +13,9 @@ Iin inp GND dc 0 ac 0
 op
 print v(vout)
 ac dec 20 1 1G
-meas ac zin_1k FIND vm(inp) AT=1k
 meas ac zout_lf FIND vm(vout) AT=1
-print zin_1k zout_lf
-plot vm(inp) vm(VOUT) ylog
+print zout_lf
+plot vm(vout) ylog
 .endc}
 
 
